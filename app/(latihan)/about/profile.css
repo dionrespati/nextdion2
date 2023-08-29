@@ -1,0 +1,26 @@
+.profile-card {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  background: #005e9b;
+  color: white;
+  text-align: center;
+  padding: 2em;
+}
+
+.social-list {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  margin: 0 auto;
+}
+
+.social-link {
+  color: #5bcbf0;
+  opacity: 0.5;
+}

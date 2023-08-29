@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+/app/(latihan)
+
 # production
 /build
 

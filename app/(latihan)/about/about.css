@@ -1,0 +1,144 @@
+body {
+  font-size: 15px;
+}
+header {
+  background-color: yellow;
+  padding: 20px;
+  text-align: center;
+}
+
+.about-container {
+  display: flex;
+}
+
+.leftbar {
+  background-color: lightblue;
+  flex: 1;
+  padding: 20px;
+}
+
+.mainbar {
+  /* background-color: lightgreen; */
+  flex: 4;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.kotak {
+  background-color: lightpink;
+  margin: 20px;
+  padding: 0.2em;
+  border-radius: 0.5em;
+  flex-basis: calc(
+    33.33% - 40px
+  ); /* Mengatur ukuran sesuai dengan 3 kotak dalam satu baris */
+  box-sizing: border-box; /* Menyertakan padding dan border dalam perhitungan ukuran */
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.kotak p {
+  font-size: 1rem;
+  padding: 1em;
+}
+
+.rightbar {
+  background-color: lightyellow;
+  flex: 1;
+  padding: 20px;
+}
+
+footer {
+  background-color: yellow;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  flex: 1;
+}
+
+.footer-content {
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 4;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 200px; /* Atur lebar maksimum card sesuai kebutuhan */
+  margin-right: 0.5rem;
+}
+
+.card-image {
+  width: 100%;
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.card-description {
+  margin-bottom: 10px;
+  white-space: nowrap; /* Mencegah pemotongan teks menjadi beberapa baris */
+  overflow: hidden; /* Menghilangkan teks yang melebihi batas kontainer */
+  text-overflow: ellipsis; /* Menampilkan elipsis (...) saat teks terpotong */
+}
+
+.card-price {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.add-to-cart-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #c62828;
+}
+
+/* Responsif untuk layar dengan lebar kurang dari atau sama dengan 640px */
+@media (max-width: 640px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .leftbar,
+  .rightbar {
+    flex: none;
+    width: 100%;
+  }
+
+  header,
+  .mainbar,
+  footer {
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .mainbar {
+    padding: 2px;
+  }
+
+  .kotak {
+    width: 100%;
+  }
+}
