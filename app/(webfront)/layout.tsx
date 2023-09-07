@@ -11,7 +11,7 @@ export default function RootLayout({
     <div>
       <Header />
       <ProductSearching />
-      <div className="mt-24">{children}</div>
+      <div className="lg:mt-28">{children}</div>
       {/*       <Footer /> */}
     </div>
   );

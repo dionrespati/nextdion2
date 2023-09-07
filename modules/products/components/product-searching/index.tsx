@@ -53,8 +53,8 @@ export function ProductSearching() {
   const categories = data ?? [];
 
   return (
-    <div className="fixed top-[60px] flex w-full flex-col sm:flex-row items-center gap-2 p-2">
-      <div className="flex w-full flex-col md:w-2/5 md:flex-row items-center gap-2">
+    <div className="fixed top-[50px] flex w-full flex-col bg-slate-200 sm:flex-row items-center gap-2 p-2">
+      <div className="flex w-full flex-col md:w-1/5 md:flex-row items-center gap-2">
         {/* <AutoCompleteSelect options={categories} onSelect={handleSelect} /> */}
         <select
           name="category"
@@ -70,7 +70,7 @@ export function ProductSearching() {
           ))}
         </select>
       </div>
-      <div className="flex w-full flex-col md:w-3/5 md:flex-row items-center gap-2">
+      <div className="flex w-full flex-col md:w-2/5 md:flex-row items-center gap-2">
         <InputSearch
           placeholder="Cari produk disini.."
           name="searchPrd"

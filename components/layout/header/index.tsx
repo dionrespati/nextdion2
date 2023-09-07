@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { MdMenu, MdClear } from "react-icons/md";
 import clsx from "clsx";
+import { Badge } from "@components";
+import Image from "next/image";
 
 const menu = [
   { url: "/products", linkName: "Produk", icon: "MdLogin" },
@@ -20,12 +22,13 @@ const Header = () => {
   return (
     <header className="fixed top-0 w-full z-10 bg-slate-200 h-[50px]">
       <nav className="text-violet-900 text-lg font-semibold flex justify-between gap-2 items-center p-2">
-        <div>
+        <div className="flex justify-center items-center gap-2">
+          <Image width={45} height={45} alt="prop" src="/assets/ic-logo.png" />
           <Link href="/products" className="text-2xl font-semibold">
             BakulMurah
           </Link>
         </div>
-        <ul className="hidden lg:flex justify-end items-center gap-3">
+        <ul className="hidden lg:flex justify-end items-center gap-5">
           {menu.map((item) => (
             <li key={item.url}>
               <Link href={item.url} className="hover:text-red-500">
@@ -34,6 +37,7 @@ const Header = () => {
             </li>
           ))}
           <li>Sign In</li>
+          <Badge totalItems={2} />
         </ul>
         <button className="lg:hidden" onClick={toggleMenu}>
           <MdMenu width={20} height={20} />
