@@ -33,7 +33,7 @@ const AutoCompleteSelect: React.FC<AutoCompleteSelectProps> = ({
   };
 
   return (
-    <div>
+    <div className="w-full max-w-xs">
       <TextInput
         type="text"
         value={inputValue}

@@ -6,7 +6,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import type { ChangeEvent, FocusEvent, ReactNode } from "react";
+import type { ChangeEvent, FocusEvent, ReactNode, KeyboardEvent } from "react";
 import React, { useState } from "react";
 
 type TextInputProps = {
@@ -19,6 +19,7 @@ type TextInputProps = {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
   required?: boolean;
   readOnly?: boolean;
   disabled?: boolean;
@@ -39,6 +40,7 @@ export default function TextInput({
   onChange,
   onBlur,
   onFocus,
+  onKeyDown,
   disabled = false,
   required = false,
   readOnly = false,
@@ -64,6 +66,12 @@ export default function TextInput({
     setIsFocused(false);
     if (typeof onBlur === "function") {
       onBlur(e);
+    }
+  }
+
+  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+    if (typeof onKeyDown === "function") {
+      onKeyDown(e);
     }
   }
 
@@ -120,6 +128,7 @@ export default function TextInput({
             name={name}
             onChange={onChange}
             onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
             required={required}
             readOnly={readOnly}
             className={clsx(
@@ -152,13 +161,9 @@ export default function TextInput({
           )}
 
           {type === "search" && (
-            <button
-              type="button"
-              onClick={() => setisShowPassword(false)}
-              className={passwordStyle}
-            >
+            <div className="absolute top-1/2 right-2 transform -translate-y-1/2">
               <MagnifyingGlassIcon height={24} />
-            </button>
+            </div>
           )}
         </div>
         {hasSuffix && (

@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { useProductDetail } from "../hooks/use-product";
+import { useProductDetail } from "@modules";
 import Image from "next/image";
-import SearchProduct from "../components/product-searching";
 
 export default function ProductDetailPage({ params }: any) {
   const { id } = params;

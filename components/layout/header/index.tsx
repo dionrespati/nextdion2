@@ -1,31 +1,72 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
+import { MdMenu, MdClear } from "react-icons/md";
+import clsx from "clsx";
 
 const menu = [
-  { url: "/products", linkName: "Produk" },
-  { url: "/about", linkName: "Tentang Kami" },
-  { url: "/signin", linkName: "Sign In" },
+  { url: "/products", linkName: "Produk", icon: "MdLogin" },
+  { url: "/about", linkName: "Tentang Kami", icon: "MdInfoOutline" },
+  { url: "/special", linkName: "Spesial Promo", icon: "MdOutlineDiscount" },
 ];
 
 const Header = () => {
+  const [toggle, setToggle] = useState(false);
+
+  function toggleMenu() {
+    setToggle(!toggle);
+  }
+
   return (
-    <header className="bg-gray-900 text-white py-4">
-      <nav className="container mx-auto flex justify-between items-center">
-        <div className="hidden sm:block">
+    <header className="fixed top-0 w-full z-10 bg-slate-200 h-[50px]">
+      <nav className="text-violet-900 text-lg font-semibold flex justify-between gap-2 items-center p-2">
+        <div>
           <Link href="/products" className="text-2xl font-semibold">
             BakulMurah
           </Link>
         </div>
-        <ul className="flex space-x-4 sm:flex-row">
+        <ul className="hidden lg:flex justify-end items-center gap-3">
           {menu.map((item) => (
             <li key={item.url}>
-              <Link href={item.url} className="hover:text-gray-300">
+              <Link href={item.url} className="hover:text-red-500">
                 {item.linkName}
               </Link>
             </li>
           ))}
+          <li>Sign In</li>
         </ul>
+        <button className="lg:hidden" onClick={toggleMenu}>
+          <MdMenu width={20} height={20} />
+        </button>
       </nav>
+      <div
+        className={clsx(
+          toggle ? "hidden" : "block",
+          "lg:hidden fixed top-0 left-0 w-[300px] h-screen bg-white z-20",
+          "transition duration-250 ease-in-out"
+        )}
+      >
+        <div className="absolute right-2 top-2">
+          <button onClick={() => setToggle(!toggle)}>
+            <MdClear />
+          </button>
+        </div>
+        <div>
+          <ul className="flex flex-col justify-start items-start gap-3">
+            {menu.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.url}>
+                  <Link href={item.url} onClick={() => setToggle(!toggle)}>
+                    {item.linkName}
+                  </Link>
+                </li>
+              );
+            })}
+            <li>Sign In</li>
+          </ul>
+        </div>
+      </div>
     </header>
   );
 };

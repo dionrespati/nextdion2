@@ -1,6 +1,6 @@
-import { Footer, Header } from "@/components";
-
+import { Footer, Header } from "@components";
 import React from "react";
+import { ProductSearching } from "@page-components";
 
 export default function RootLayout({
   children,
@@ -10,8 +10,9 @@ export default function RootLayout({
   return (
     <div>
       <Header />
-      {children}
-      <Footer />
+      <ProductSearching />
+      <div className="mt-24">{children}</div>
+      {/*       <Footer /> */}
     </div>
   );
 }

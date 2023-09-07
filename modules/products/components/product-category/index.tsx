@@ -1,9 +1,9 @@
-import LoadingSpinner from "@/components/loading-spinner";
-import { useListProductCategory } from "../../hooks/use-product";
+import { LoadingSpinner } from "@components";
+import { useListProductCategory } from "@modules";
 import Link from "next/link";
 import React from "react";
 
-export default function ProductCategory() {
+export function ProductCategory() {
   const { data, isLoading } = useListProductCategory();
 
   if (isLoading) {

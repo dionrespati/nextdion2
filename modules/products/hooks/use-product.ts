@@ -4,7 +4,7 @@ import {
   getDetailProductById,
   getListAllProductCategories,
   getListProductsByCategory,
-} from "../services/product-service"; // Ganti dengan file API yang sesuai
+} from "@modules";
 
 export function useListProducts(searchQuery: string) {
   return useQuery(

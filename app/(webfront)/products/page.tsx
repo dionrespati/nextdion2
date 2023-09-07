@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { useListProducts } from "./hooks/use-product";
-import { IProduct } from "./types";
-import { ProductList } from "./components";
-import LoadingSpinner from "@/components/loading-spinner";
+import { useListProducts } from "@modules";
+import { IProduct } from "@types";
+import { ProductList } from "@page-components";
+import { LoadingSpinner } from "@components";
 import { useSearchParams } from "next/navigation";
 
 export default function Products() {

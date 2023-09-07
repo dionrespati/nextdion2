@@ -1,18 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { IProduct, IProductListResponse } from "../types";
-
-export async function searchProducts(
-  searchTerm: string
-): Promise<IProductListResponse> {
-  return axios
-    .get(`https://dummyjson.com/products/search?q=${searchTerm}`)
-    .then((response: AxiosResponse<IProductListResponse>) => response.data)
-    .catch((error) => {
-      throw new Error(
-        error.response?.data?.message || "Failed to fetch products"
-      );
-    });
-}
+import { IProduct, IProductListResponse } from "@types";
 
 export async function getListProducts(
   searchTerm: string

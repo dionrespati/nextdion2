@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { useListProductByCategory } from "../../hooks/use-product";
-import { IProduct } from "../../types";
-import { ProductList } from "../../components";
-import LoadingSpinner from "@/components/loading-spinner";
+import { useListProductByCategory } from "@modules";
+import { IProduct } from "@types";
+import { ProductList } from "@page-components";
+import { LoadingSpinner } from "@components";
 
 export default function ProductByCat({ params }: string | any) {
   const { categoryName } = params;

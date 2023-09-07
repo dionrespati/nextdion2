@@ -1,4 +1,4 @@
-import { ReactQueryWrapper } from "@/components";
+import { ReactQueryWrapper } from "@components";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Head from "next/head";
