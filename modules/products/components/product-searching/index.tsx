@@ -54,7 +54,7 @@ export function ProductSearching() {
 
   return (
     //className="fixed top-[50px] flex w-full flex-col bg-slate-200 sm:flex-row items-center gap-2 p-2"
-    <div className="fixed top-[50px] flex w-full flex-col bg-slate-200 sm:flex-row items-center gap-2 p-2">
+    <div className="flex">
       <div className="flex w-full flex-col lg:w-20 lg:flex-row items-center gap-2">
         <select
           name="category"
