@@ -5,6 +5,7 @@ import { MdMenu, MdClear } from "react-icons/md";
 import clsx from "clsx";
 import { Badge } from "@components";
 import Image from "next/image";
+import { ProductSearching } from "@modules";
 
 const menu = [
   { url: "/products", linkName: "Produk", icon: "MdLogin" },
@@ -21,14 +22,14 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full z-10 bg-slate-200 h-[50px]">
-      <nav className="text-violet-900 text-lg font-semibold flex justify-between gap-2 items-center p-2">
+      <nav className="text-violet-900 text-lg flex justify-between gap-2 items-center p-2">
         <div className="flex justify-center items-center gap-2">
           <Image width={45} height={45} alt="prop" src="/assets/ic-logo.png" />
           <Link href="/products" className="text-2xl font-semibold">
             BakulMurah
           </Link>
         </div>
-        <ul className="hidden lg:flex justify-end items-center gap-5">
+        <ul className="hidden lg:flex justify-between items-center gap-5 bg-blue-300">
           {menu.map((item) => (
             <li key={item.url}>
               <Link href={item.url} className="hover:text-red-500">

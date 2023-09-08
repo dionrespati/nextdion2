@@ -17,5 +17,9 @@ export default function Products() {
   }
 
   const { products }: { products?: IProduct[] } = data ?? {};
+
+  if (products?.length === 0) {
+    return <div>Ngga ada</div>;
+  }
   return <ProductList products={products} />;
 }

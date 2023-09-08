@@ -49,8 +49,8 @@ export default function InputSearch({
 
   return (
     <div className="relative w-full">
-      <div className="absolute top-1/2 left-2 transform -translate-y-1/2">
-        <MagnifyingGlassIcon height={24} />
+      <div className="absolute top-1/2 left-2 transform -translate-y-1/2 flex">
+        <MagnifyingGlassIcon height={24} className="opacity-50" />
       </div>
       <form>
         <input
