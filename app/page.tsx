@@ -7,7 +7,7 @@ import { LoadingSpinner } from "@components";
 import { useSearchParams } from "next/navigation";
 
 export default function Products() {
-  const searchParams = useSearchParams();
+  /* const searchParams = useSearchParams();
   const search = searchParams.get("search") ?? "";
 
   const { data, isLoading } = useListProducts(search);
@@ -21,5 +21,6 @@ export default function Products() {
   if (products?.length === 0) {
     return <div>Ngga ada</div>;
   }
-  return <ProductList products={products} />;
+  return <ProductList products={products} />; */
+  return <div>Tolong</div>;
 }
