@@ -11,6 +11,8 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   ghost?: boolean;
+  startIcon?: React.ReactNode | undefined; // Tambahkan prop startIcon
+  endIcon?: React.ReactNode | undefined;
 }
 
 interface ButtonReturn {
@@ -29,6 +31,8 @@ export default function Button(props: ButtonProps) {
     onClick,
     disabled = false,
     ghost = false,
+    startIcon = undefined,
+    endIcon = undefined,
   } = props;
 
   function getButtonStyle(): ButtonReturn {
@@ -76,7 +80,7 @@ export default function Button(props: ButtonProps) {
     <button
       type={type}
       className={clsx(
-        "px-4 py-1 rounded",
+        "flex items-center gap-2 px-4 py-1 rounded",
         borderColor,
         bgColor,
         textColor,
@@ -89,7 +93,9 @@ export default function Button(props: ButtonProps) {
       disabled={disabled}
       onClick={onClick}
     >
+      {startIcon && <span className="mr-2">{startIcon}</span>}
       {children}
+      {endIcon && <span className="ml-2">{endIcon}</span>}
     </button>
   );
 }

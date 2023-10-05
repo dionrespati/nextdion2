@@ -2,29 +2,13 @@
 
 import { InputSearch, LoadingSpinner } from "@components";
 import React, { useState } from "react";
-import { useListProductCategory } from "@modules";
 
 import { useRouter } from "next/navigation";
 
 export function ProductSearching() {
   const { push } = useRouter();
 
-  const { data, isLoading, isSuccess } = useListProductCategory();
-
-  const [category, setCategory] = useState("");
   const [searchText, setSearchText] = useState("");
-
-  function pilihCategory(e: React.ChangeEvent<HTMLSelectElement>) {
-    const { value } = e.target;
-    setCategory(value);
-    e.preventDefault();
-
-    if (value !== "") {
-      push(`/products/category/${value}`);
-    } else {
-      push(`/products`);
-    }
-  }
 
   function handleSearchTextChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
@@ -44,31 +28,11 @@ export function ProductSearching() {
     }
   }
 
-  function handleSelect() {}
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  const categories = data ?? [];
-
   return (
     //className="fixed top-[50px] flex w-full flex-col bg-slate-200 sm:flex-row items-center gap-2 p-2"
     <div className="flex">
-      <div className="flex w-full flex-col lg:w-20 lg:flex-row items-center gap-2">
-        <select
-          name="category"
-          id=""
-          onChange={pilihCategory}
-          className="w-full p-2 rounded-lg text-lg font-normal"
-        >
-          <option value="">--Pilih Kategori--</option>
-          {data?.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+      <div className="flex justify-center w-full flex-col lg:w-20 lg:flex-row items-center gap-2 hover:bg-slate-200 cursor-pointer">
+        Kategori
       </div>
       <div className="flex w-full flex-col lg:w-56 lg:flex-row items-center gap-2">
         <InputSearch

@@ -1,3 +1,5 @@
+"use client";
+
 import axios, { AxiosResponse } from "axios";
 import { IProduct, IProductListResponse } from "@types";
 
@@ -43,7 +45,7 @@ export async function getDetailProductById(id: number): Promise<IProduct> {
 export async function getListProductsByCategory(
   categoryName: string
 ): Promise<IProductListResponse> {
-  console.log({ categoryName });
+  //console.log({ categoryName });
   return axios
     .get(`https://dummyjson.com/products/category/${categoryName}`)
     .then((response: AxiosResponse<IProductListResponse>) => response.data)

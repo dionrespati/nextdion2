@@ -8,7 +8,7 @@ interface ProductListProps {
 
 export function ProductList({ products }: ProductListProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center p-3 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 justify-center p-3 w-full">
       {products?.map((prd) => (
         <ProductCard
           key={prd.id}

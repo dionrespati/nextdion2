@@ -50,7 +50,7 @@ export default function InputSearch({
   return (
     <div className="relative w-full">
       <div className="absolute top-1/2 left-2 transform -translate-y-1/2 flex">
-        <MagnifyingGlassIcon height={24} className="opacity-50" />
+        <MagnifyingGlassIcon height={24} className="opacity-40" />
       </div>
       <form>
         <input
@@ -64,8 +64,8 @@ export default function InputSearch({
           value={value}
           name={name}
           className={clsx(
-            `w-full p-4 pl-10 rounded-lg flex justify-center text-slate-900 items-center px-2 h-9 border border-solid focus:outline-none`,
-            { "border-blue-500": isFocused }
+            `w-full p-4 pl-10 rounded-lg flex justify-center text-slate-900 items-center px-2 h-9 border border-solid border-slate-400 focus:outline-none`,
+            { "border-blue-400": isFocused }
           )}
         />
       </form>

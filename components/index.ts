@@ -5,5 +5,7 @@ export { headerMenu } from "./layout/constant";
 export { default as ReactQueryWrapper } from "./react-query-wrapper";
 export { default as TextInput } from "./text-input";
 export { default as InputSearch } from "./text-input-search";
+export { default as Button } from "./button";
 export { default as LoadingSpinner } from "./loading-spinner";
 export { Badge } from "./cart/badge";
+export { Notif } from "./cart/notif";
