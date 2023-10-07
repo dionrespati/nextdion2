@@ -1,44 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { MdMenu, MdClear } from "react-icons/md";
 import clsx from "clsx";
 import { Badge, Notif } from "@components";
 import Image from "next/image";
 import { ProductSearching } from "@modules";
 import { useListProductCategory } from "@modules";
-import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const { push } = useRouter();
-
-  const [toggle, setToggle] = useState(false);
-  const [countCart, setCountCart] = useState(0);
-  const [showCategory, setShowCategory] = useState(true);
-  const [category, setCategory] = useState("");
-
   const { data } = useListProductCategory();
-
-  function toggleMenu() {
-    setToggle(!toggle);
-  }
-
-  useEffect(() => {
-    console.log({ showCategory });
-    console.log({ category });
-    console.log({ toggle });
-  }, [showCategory, category, toggle]);
-
-  function pilihCategory(nilai: string) {
-    setCategory(nilai);
-    setShowCategory(false);
-    if (nilai !== "") {
-      push(`/products/category/${nilai}`);
-    } else {
-      push(`/products`);
-    }
-  }
-
   const categories = data ?? [];
 
   return (
@@ -55,7 +25,7 @@ const Header = () => {
         </div>
         <div className="flex gap-2 items-center">
           <ProductSearching />
-          <Badge totalItems={countCart} />
+          <Badge />
           <Notif totalItems={0} />
           {/* <button className="lg:hidden" onClick={toggleMenu}>
             <MdMenu width={20} height={20} />

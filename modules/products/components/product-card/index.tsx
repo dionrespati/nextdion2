@@ -47,7 +47,7 @@ export function ProductCard({
             className="bg-blue-500 text-white rounded-lg px-4 py-2 w-full hover:bg-green-700 transition duration-300 ease-in-out"
             onClick={() => addProduct(id)}
           >
-            Add to Carts
+            Tambah ke Keranjang
           </button>
         </div>
       </div>
