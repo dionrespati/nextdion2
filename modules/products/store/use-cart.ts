@@ -8,6 +8,8 @@ type CartItem = {
   price: number;
   discountPercentage: number;
   note?: string;
+  stock?: number;
+  checked?: boolean;
 };
 
 type CartState = {
@@ -17,6 +19,7 @@ type CartState = {
 type Action = {
   addToCart: (cart: CartItem) => void;
   removeFromCart: (id: number) => void;
+  selectProductToChecked: (id: number, checked: boolean) => void;
   clearCart: () => void;
 };
 
@@ -53,6 +56,22 @@ export const useCartStore = create<CartState & Action>((set) => ({
     set((state) => ({
       cart: state.cart.filter((item) => item.id !== id),
     }));
+  },
+
+  selectProductToChecked: (id: number, checked: boolean) => {
+    set((state) => {
+      // Cek apakah item dengan ID yang sama sudah ada dalam keranjang
+      const existingItemIndex = state.cart.findIndex(
+        (cartItem) => cartItem.id === id
+      );
+
+      if (existingItemIndex !== -1) {
+        // Item dengan ID yang sama ditemukan dalam keranjang
+        // Update properti checked sesuai dengan parameter checked
+        state.cart[existingItemIndex].checked = checked;
+      }
+      return { cart: [...state.cart] };
+    });
   },
 
   clearCart: () => {

@@ -19,6 +19,7 @@ export function ProductCard({
   price,
   thumbnail,
 }: IProductCardProps) {
+  const priceIndonesia = price * 14000;
   return (
     <div className="rounded-lg shadow-lg p-4 border border-gray-300 hover:shadow-xl transition duration-300 ease-in-out">
       <Link href={`/products/${id}`}>
@@ -38,9 +39,9 @@ export function ProductCard({
             className="text-lg font-bold truncate"
             style={{ maxWidth: "150px" }}
           >
-            {title} LKK
+            {title}
           </h2>
-          <p className="text-gray-600">${price.toLocaleString()}</p>
+          <p className="text-gray-600">Rp {priceIndonesia.toLocaleString()}</p>
         </div>
         <div className="flex justify-between mt-4">
           <button

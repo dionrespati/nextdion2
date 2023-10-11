@@ -27,6 +27,8 @@ export default function ProductDetailPage({ params }: any) {
     thumbnail,
   } = data || {};
 
+  const priceRupiah = Math.ceil(price * 14000);
+
   return (
     <div>
       <div className="container mx-auto p-5">
@@ -44,7 +46,9 @@ export default function ProductDetailPage({ params }: any) {
           <div className="md:w-2/5 mt-4 md:mt:0">
             <h2 className="text-2xl font-bold mb-2">{title}</h2>
             <p className="text-lg text-gray-600 mb-4">{description}</p>
-            <p className="text-lg text-gray-800 mb-4">Harga: ${price}</p>
+            <p className="text-lg text-gray-800 mb-4">
+              Harga: Rp {priceRupiah.toLocaleString()}
+            </p>
             <p className="text-lg text-gray-800 mb-4">
               Diskon: {discountPercentage}%
             </p>
