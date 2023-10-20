@@ -21,5 +21,9 @@ export default function Products() {
   if (products?.length === 0) {
     return <div>Ngga ada</div>;
   }
-  return <ProductList products={products} />;
+  return (
+    <>
+      <ProductList products={products} />
+    </>
+  );
 }

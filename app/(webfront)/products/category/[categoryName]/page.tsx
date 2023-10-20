@@ -17,5 +17,13 @@ export default function ProductByCat({ params }: string | any) {
 
   const { products }: { products?: IProduct[] } = data ?? {};
 
-  return <ProductList products={products} />;
+  if (products?.length === 0) {
+    return <div>Ngga ada</div>;
+  }
+
+  return (
+    <>
+      <ProductList products={products} />
+    </>
+  );
 }

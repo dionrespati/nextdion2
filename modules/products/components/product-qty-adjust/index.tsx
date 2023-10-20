@@ -29,7 +29,8 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
     return <LoadingSpinner />;
   }
 
-  const { id, title, price, discountPercentage, stock } = dataProduct;
+  const { id, title, price, thumbnail, discountPercentage, stock } =
+    dataProduct;
 
   const totalPrice = curQty * price * 14000;
   // Menghitung jumlah diskon dalam jumlah persen
@@ -47,6 +48,7 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
     title: string,
     qty: number,
     price: number,
+    thumbnail: string,
     discountPercentage: number,
     note: string,
     stock: number
@@ -59,6 +61,7 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
       title,
       qty,
       price,
+      thumbnail,
       discountPercentage,
       note,
       stock,
@@ -147,6 +150,7 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
               title,
               curQty,
               price,
+              thumbnail,
               discountPercentage,
               note,
               stock

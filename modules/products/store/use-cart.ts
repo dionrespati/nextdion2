@@ -6,6 +6,7 @@ type CartItem = {
   title: string;
   qty: number;
   price: number;
+  thumbnail: string;
   discountPercentage: number;
   note?: string;
   stock?: number;
@@ -20,6 +21,7 @@ type Action = {
   addToCart: (cart: CartItem) => void;
   removeFromCart: (id: number) => void;
   selectProductToChecked: (id: number, checked: boolean) => void;
+  setCheckedAllProduct: (isCheked: boolean) => void;
   clearCart: () => void;
 };
 
@@ -72,6 +74,15 @@ export const useCartStore = create<CartState & Action>((set) => ({
       }
       return { cart: [...state.cart] };
     });
+  },
+
+  setCheckedAllProduct: (isChecked: boolean) => {
+    set((state) => ({
+      cart: state.cart.map((item) => ({
+        ...item,
+        checked: isChecked,
+      })),
+    }));
   },
 
   clearCart: () => {

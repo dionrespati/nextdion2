@@ -21,7 +21,7 @@ export function ProductCard({
 }: IProductCardProps) {
   const priceIndonesia = price * 14000;
   return (
-    <div className="rounded-lg shadow-lg p-4 border border-gray-300 hover:shadow-xl transition duration-300 ease-in-out">
+    <div className="rounded-lg max-h-96 shadow-lg p-4 border border-gray-300 hover:shadow-xl transition duration-300 ease-in-out">
       <Link href={`/products/${id}`}>
         <div className="w-full h-48 md:h-56 overflow-hidden">
           <Image

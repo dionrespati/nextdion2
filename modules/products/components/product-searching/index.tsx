@@ -30,11 +30,11 @@ export function ProductSearching() {
 
   return (
     //className="fixed top-[50px] flex w-full flex-col bg-slate-200 sm:flex-row items-center gap-2 p-2"
-    <div className="flex">
-      <div className="flex justify-center w-full flex-col lg:w-20 lg:flex-row items-center gap-2 hover:bg-slate-200 cursor-pointer">
-        Kategori
+    <div className="flex w-full gap-3">
+      <div className="flex justify-center flex-col lg:w-16 lg:flex-row items-center gap-2 hover:bg-slate-200 cursor-pointer">
+        <span className="text-sm font-semibold">Kategori</span>
       </div>
-      <div className="flex w-full flex-col lg:w-56 lg:flex-row items-center gap-2">
+      <div className="flex flex-col lg:w-[400px] lg:flex-row items-center gap-2">
         <InputSearch
           placeholder="Cari produk disini.."
           name="searchPrd"

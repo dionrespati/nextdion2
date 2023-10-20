@@ -9,3 +9,4 @@ export { default as Button } from "./button";
 export { default as LoadingSpinner } from "./loading-spinner";
 export { Badge } from "./cart/badge";
 export { Notif } from "./cart/notif";
+export { UserIcon } from "./cart/user";
