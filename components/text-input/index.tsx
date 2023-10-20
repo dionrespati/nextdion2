@@ -26,8 +26,8 @@ type TextInputProps = {
   className?: string;
   placeholder?: string;
   maxLength?: number;
-  prefix?: string;
-  suffix?: string;
+  prefix?: string | ReactNode;
+  suffix?: string | ReactNode;
 };
 
 export default function TextInput({
@@ -102,7 +102,11 @@ export default function TextInput({
     >
       <label
         htmlFor={name}
-        className={clsx("block text-left", textColor, borderColor)}
+        className={clsx(
+          "block font-medium text-left mb-1",
+          textColor,
+          borderColor
+        )}
       >
         {label}
       </label>
@@ -155,7 +159,11 @@ export default function TextInput({
           )}
 
           {inputType === "text" && isShowPassword && (
-            <button type="button" className={passwordStyle}>
+            <button
+              type="button"
+              onClick={() => setisShowPassword(false)}
+              className={passwordStyle}
+            >
               <EyeIcon height={24} />
             </button>
           )}

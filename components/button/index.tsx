@@ -11,6 +11,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   ghost?: boolean;
+  className?: string;
 }
 
 interface ButtonReturn {
@@ -29,6 +30,7 @@ export default function Button(props: ButtonProps) {
     onClick,
     disabled = false,
     ghost = false,
+    className = "",
   } = props;
 
   function getButtonStyle(): ButtonReturn {
@@ -77,6 +79,7 @@ export default function Button(props: ButtonProps) {
       type={type}
       className={clsx(
         "px-4 py-1 rounded",
+        className,
         borderColor,
         bgColor,
         textColor,

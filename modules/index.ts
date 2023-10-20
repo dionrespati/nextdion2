@@ -9,3 +9,8 @@ export * from "./products/components/product-searching";
 export * from "./products/components/product-qty-adjust";
 export * from "./products/store/use-cart";
 export * from "./products/store/use-wishlist";
+
+//login
+export * from "./login/components/login";
+export * from "./login/components/register";
+export * from "./login/components/forgot-password";
