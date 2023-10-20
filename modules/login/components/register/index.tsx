@@ -2,7 +2,7 @@
 
 import { Button, TextInput } from "@components";
 import React, { useState } from "react";
-import { BiKey, BiUser, BiMailSend } from "react-icons/bi";
+import { BiKey, BiUser, BiMailSend, BiUserPlus } from "react-icons/bi";
 
 interface IRegisterUser {
   username: string;
@@ -31,10 +31,10 @@ export function RegisterUser() {
       <div className="mb-2">
         <TextInput
           label="Email"
-          type="text"
+          type="email"
           name="email"
           prefix={<BiMailSend size={25} />}
-          value={username}
+          value={email}
           onChange={handleChange}
         />
       </div>
@@ -44,7 +44,7 @@ export function RegisterUser() {
           type="text"
           name="username"
           prefix={<BiUser size={25} />}
-          value={email}
+          value={username}
           onChange={handleChange}
         />
       </div>
@@ -56,6 +56,7 @@ export function RegisterUser() {
           prefix={<BiKey size={25} />}
           value={password}
           onChange={handleChange}
+          message="Minimal 8 Karakter, harus terdiri dari Huruf Kapital, Angka dan Special Karakter"
         />
       </div>
       <div className="mb-4">
@@ -69,7 +70,12 @@ export function RegisterUser() {
         />
       </div>
       <div className="w-full">
-        <Button className="w-full" color="primary" type="button">
+        <Button
+          className="w-full"
+          color="primary"
+          type="button"
+          iconStart={<BiUserPlus size={30} />}
+        >
           Register
         </Button>
       </div>

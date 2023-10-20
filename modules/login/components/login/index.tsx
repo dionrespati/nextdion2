@@ -45,8 +45,12 @@ export function Login() {
         />
       </div>
       <div className="w-full">
-        <Button className="w-full" color="primary" type="button">
-          <BiLogInCircle />
+        <Button
+          className="w-full"
+          color="primary"
+          type="button"
+          iconStart={<BiLogInCircle size={23} />}
+        >
           Login
         </Button>
       </div>

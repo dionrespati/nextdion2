@@ -28,6 +28,7 @@ type TextInputProps = {
   maxLength?: number;
   prefix?: string | ReactNode;
   suffix?: string | ReactNode;
+  size?: "md" | "lg" | "sm";
 };
 
 export default function TextInput({
@@ -49,6 +50,7 @@ export default function TextInput({
   maxLength,
   prefix,
   suffix,
+  size = "md",
 }: TextInputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [isShowPassword, setisShowPassword] = useState(false);
@@ -117,10 +119,17 @@ export default function TextInput({
               "rounded-l border-r-0",
               addOnsStyle,
               textColor,
-              borderColor
+              borderColor,
+              {
+                "h-10": size === "sm",
+                "h-12": size === "md",
+                "h-14": size === "lg",
+              }
             )}
           >
-            <span>{prefix}</span>
+            <span className={size === "sm" || size === "md" ? `p-2` : `p-3`}>
+              {prefix}
+            </span>
           </div>
         )}
         <div className="relative w-full">
@@ -143,6 +152,9 @@ export default function TextInput({
               {
                 "rounded-l": !hasPrefix,
                 "rounded-r": !hasSuffix,
+                "h-10": size === "sm",
+                "h-12": size === "md",
+                "h-14": size === "lg",
               }
             )}
             placeholder={placeholder}
@@ -188,7 +200,7 @@ export default function TextInput({
         )}
       </div>
       {message && (
-        <p className={clsx("mt-1 text-[10px] leading-normal", textColor)}>
+        <p className={clsx("mt-1 text-[11px] leading-normal", textColor)}>
           {message}
         </p>
       )}
