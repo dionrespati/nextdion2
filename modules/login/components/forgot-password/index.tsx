@@ -5,8 +5,8 @@ import { BiMailSend, BiReset } from "react-icons/bi";
 import { GiSmartphone } from "react-icons/gi";
 
 interface IForgotPassword {
-  email?: string;
-  phone?: string;
+  email: string;
+  phone: string;
 }
 
 export function ForgotPassword() {
@@ -18,6 +18,12 @@ export function ForgotPassword() {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = event.target;
     setForgotPassword((prevState) => ({ ...prevState, [name]: value }));
+  }
+
+  function handleInputNumber(event: React.ChangeEvent<HTMLInputElement>): void {
+    const { name, value } = event.target;
+    const inputValue = value.replace(/[^0-9]/g, ""); // Hanya biarkan angka
+    setForgotPassword((prevState) => ({ ...prevState, [name]: inputValue }));
   }
 
   const { email, phone } = forgotPassword;
@@ -43,7 +49,7 @@ export function ForgotPassword() {
           name="phone"
           prefix={<GiSmartphone size={25} />}
           value={phone}
-          onChange={handleChange}
+          onChange={handleInputNumber}
         />
       </div>
       <div className="w-full">

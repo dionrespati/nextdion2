@@ -89,7 +89,9 @@ export default function Button(props: ButtonProps) {
         textColor,
         `text-${size}`,
         {
-          "text-base h-10": size === "md",
+          "text-base h-12": size === "md",
+          "text-base h-14": size === "md",
+          "text-base h-10": size === "sm",
           "w-full": block,
         }
       )}

@@ -14,3 +14,7 @@ export * from "./products/store/use-wishlist";
 export * from "./login/components/login";
 export * from "./login/components/register";
 export * from "./login/components/forgot-password";
+
+//user
+export * from "./user/components/sidebar";
+export * from "./user/components/settings/navbar";

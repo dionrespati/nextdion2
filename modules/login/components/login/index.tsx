@@ -21,6 +21,7 @@ export function Login() {
   }
 
   const { username, password } = loginData;
+  const isValidForm = username !== "" && password !== "";
 
   return (
     <>
@@ -32,6 +33,7 @@ export function Login() {
           prefix={<BiUser size={25} />}
           value={username}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="mb-4">
@@ -42,6 +44,7 @@ export function Login() {
           prefix={<BiKey size={25} />}
           value={password}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="w-full">
@@ -50,6 +53,7 @@ export function Login() {
           color="primary"
           type="button"
           iconStart={<BiLogInCircle size={23} />}
+          disabled={!isValidForm}
         >
           Login
         </Button>
