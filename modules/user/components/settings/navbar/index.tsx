@@ -1,31 +1,25 @@
 import React from "react";
-import Link from "next/link";
+import { NavbarUserSetting } from "@modules";
 
 const listMenu = [
   {
-    link: "/user/settings",
+    link: "/user/settings?tipe=Biodata",
     name: "Biodata",
   },
   {
-    link: "/user/settings/alamat",
+    link: "/user/settings?tipe=Daftar Alamat",
     name: "Daftar Alamat",
   },
   {
-    link: "/user/settings/rekening",
+    link: "/user/settings?tipe=Rekening Bank",
     name: "Rekening Bank",
   },
 ];
 
-export function UserSettingNavbar() {
+export function UserSettingNavbar({ tipe }: { tipe: string }) {
   return (
     <div className="mb-3">
-      <ul className="flex justify-start items-center gap-7 border-b">
-        {listMenu.map((menuItem, index) => (
-          <Link key={index} href={menuItem.link}>
-            <span className="text-black font-semibold">{menuItem.name}</span>
-          </Link>
-        ))}
-      </ul>
+      <NavbarUserSetting listMenu={listMenu} tipe={tipe} />
     </div>
   );
 }

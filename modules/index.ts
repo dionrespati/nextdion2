@@ -16,5 +16,12 @@ export * from "./login/components/register";
 export * from "./login/components/forgot-password";
 
 //user
-export * from "./user/components/sidebar";
+export * from "./user/components/layout/sidebar";
+export * from "./user/components/layout/navbar";
+export * from "./user/components/transaksi/navbar";
+export * from "./user/components/transaksi/transaksi-pending";
+export * from "./user/components/transaksi/transaksi-sukses";
 export * from "./user/components/settings/navbar";
+export * from "./user/components/settings/biodata";
+export * from "./user/components/settings/daftar-alamat";
+export * from "./user/components/settings/rekening-bank";

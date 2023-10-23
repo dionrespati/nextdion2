@@ -1,5 +1,17 @@
 import React from "react";
+import { TransaksiNavbar, TransaksiPending, TransaksiSukses } from "@modules";
 
-export default function UserTransaksi() {
-  return <div>Ini Halaman Transaksi User</div>;
+export default function UserTransaksi({
+  searchParams,
+}: {
+  searchParams: { tipe: string | "Pending" };
+}) {
+  const { tipe } = searchParams;
+  return (
+    <>
+      <TransaksiNavbar tipe={tipe} />
+      {tipe === "Pending" && <TransaksiPending />}
+      {tipe === "Berhasil" && <TransaksiSukses />}
+    </>
+  );
 }

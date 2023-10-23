@@ -1,6 +1,30 @@
-import React from "react";
-import { FaRegUser } from "react-icons/fa";
+import {
+  UserBiodata,
+  UserSettingNavbar,
+  UserDaftarAlamat,
+  UserRekeningBank,
+} from "@modules";
 
-export default function UserHome() {
-  return <div>Ini adalah Content User</div>;
+import React from "react";
+
+const data = [
+  {
+    nama: "Dion Respati",
+  },
+];
+
+export default function UserHome({
+  searchParams,
+}: {
+  searchParams: { tipe: string | "Biodata" };
+}) {
+  const { tipe } = searchParams;
+  return (
+    <>
+      <UserSettingNavbar tipe={tipe} />
+      {tipe === "Biodata" && <UserBiodata />}
+      {tipe === "Daftar Alamat" && <UserDaftarAlamat />}
+      {tipe === "Rekening Bank" && <UserRekeningBank />}
+    </>
+  );
 }
