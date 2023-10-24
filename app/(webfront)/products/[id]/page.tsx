@@ -1,19 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ProductQtyAdjust, useProductDetail } from "@modules";
+import React from "react";
+import { ProductQtyAdjust, useProductDetail, dollar_ind_curr } from "@modules";
 import Image from "next/image";
+import { ErrorMessage, LoadingSpinner } from "@components";
 export default function ProductDetailPage({ params }: any) {
   const { id } = params;
 
-  const { data, isLoading } = useProductDetail(id);
+  const { data, isFetched } = useProductDetail(id);
 
-  useEffect(() => {
-    console.log("Terender...");
-  });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (!isFetched) {
+    return <LoadingSpinner />;
   }
 
   const {
@@ -27,7 +24,7 @@ export default function ProductDetailPage({ params }: any) {
     thumbnail,
   } = data || {};
 
-  const priceRupiah = Math.ceil(price * 14000);
+  const priceRupiah = Math.ceil(price * dollar_ind_curr);
 
   return (
     <div>

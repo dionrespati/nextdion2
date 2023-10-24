@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import { useListProducts } from "@modules";
-import { IProduct } from "@types";
-import { ProductList } from "@page-components";
-import { LoadingSpinner } from "@components";
+import { useListProducts, ProductList, IProduct } from "@modules";
+import { ErrorMessage, LoadingSpinner } from "@components";
 import { useSearchParams } from "next/navigation";
 
 export default function Products() {
@@ -19,7 +17,12 @@ export default function Products() {
   const { products }: { products?: IProduct[] } = data ?? {};
 
   if (products?.length === 0) {
-    return <div>Ngga ada</div>;
+    return (
+      <ErrorMessage
+        pesan="Produk yang anda cari tidak ditemukan.."
+        timeout={3000}
+      />
+    );
   }
   return (
     <>

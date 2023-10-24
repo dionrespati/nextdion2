@@ -7,9 +7,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex p-4 gap-4">
+    <main className="flex p-1 gap-4">
       <SideBarUser />
       <div className="w-3/4 p-2">{children}</div>
-    </div>
+    </main>
   );
 }

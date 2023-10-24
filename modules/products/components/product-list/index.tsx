@@ -1,6 +1,5 @@
 import React from "react";
-import { ProductCard, ProductCategory } from "@page-components";
-import { IProduct } from "@types";
+import { ProductCard, ProductCategory, IProduct } from "@modules";
 
 interface ProductListProps {
   products?: IProduct[];

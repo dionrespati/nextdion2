@@ -22,9 +22,9 @@ export default function UserHome({
   return (
     <>
       <UserSettingNavbar tipe={tipe} />
-      {tipe === "Biodata" && <UserBiodata />}
-      {tipe === "Daftar Alamat" && <UserDaftarAlamat />}
-      {tipe === "Rekening Bank" && <UserRekeningBank />}
+      {tipe === "Biodata" ? <UserBiodata /> : null}
+      {tipe === "Daftar Alamat" ? <UserDaftarAlamat /> : null}
+      {tipe === "Rekening Bank" ? <UserRekeningBank /> : null}
     </>
   );
 }

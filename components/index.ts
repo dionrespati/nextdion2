@@ -10,3 +10,4 @@ export { default as LoadingSpinner } from "./loading-spinner";
 export { Badge } from "./cart/badge";
 export { Notif } from "./cart/notif";
 export { UserIcon } from "./cart/user";
+export { ErrorMessage } from "./not-found";

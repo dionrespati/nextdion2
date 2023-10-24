@@ -1,25 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { VscEdit } from "react-icons/vsc";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
-import { useCartStore } from "@modules";
+import { useCartStore, dollar_ind_curr } from "@modules";
 import Link from "next/link";
 import Image from "next/image";
 import { Fragment } from "react";
 import clsx from "clsx";
+import { ErrorMessage } from "@components";
 
 export default function CartList() {
   const { cart, addToCart, selectProductToChecked, setCheckedAllProduct } =
     useCartStore();
   const [selectAllCart, setSelectAllCart] = useState(false);
 
-  useEffect(() => {
-    console.log(`di render cart nya..`);
-  }, [cart]);
-
   if (cart.length === 0) {
-    return <div>Keranjang anda masih kosong</div>;
+    return <ErrorMessage pesan="Keranjang Belanja anda masih kosong.." />;
   }
 
   function addToCartPrd(
@@ -56,7 +53,7 @@ export default function CartList() {
     const { checked, price, discountPercentage, qty } = item;
     if (checked) {
       totalQtyChecked += qty;
-      const priceInd = price * 14000;
+      const priceInd = price * dollar_ind_curr;
       const totalDiskon = Math.ceil(priceInd * (discountPercentage / 100));
       totalPriceChecked += qty * (priceInd - totalDiskon);
     }
@@ -143,7 +140,7 @@ export default function CartList() {
                       </div>
                       <div className="flex p-2">
                         <div className="lg:w-2/5">
-                          {note === "" && (
+                          {note === "" ? (
                             <div className="flex gap-1 justify-start mb-4">
                               <button className="flex items-center gap-2">
                                 <VscEdit className="text-green-700" />
@@ -152,8 +149,8 @@ export default function CartList() {
                                 </span>
                               </button>
                             </div>
-                          )}
-                          {note !== "" && (
+                          ) : null}
+                          {note !== "" ? (
                             <div className="flex gap-1 justify-start mb-4">
                               <button className="flex items-center gap-2">
                                 Note : {note}
@@ -162,7 +159,7 @@ export default function CartList() {
                                 </span>
                               </button>
                             </div>
-                          )}
+                          ) : null}
                         </div>
                         <div className="flex justify-center items-center gap-5 lg:w-3/5">
                           <Link className="text-sm" href={`wishlist/${id}`}>

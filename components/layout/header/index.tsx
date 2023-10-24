@@ -12,8 +12,8 @@ const Header = () => {
   const categories = data ?? [];
 
   return (
-    <div className="relative">
-      <header className="fixed bg-slate-100 top-0 w-full z-10 h-[50px] flex justify-between gap-2 items-center">
+    <header className="relative">
+      <section className="fixed bg-slate-100 top-0 w-full z-10 h-[50px] flex justify-between gap-2 items-center">
         <div className="flex justify-center items-center gap-2 ml-3 w-full">
           <Image width={45} height={45} alt="prop" src="/assets/ic-logo.png" />
           <Link
@@ -32,8 +32,8 @@ const Header = () => {
             <MdMenu width={20} height={20} />
           </button> */}
         </div>
-      </header>
-    </div>
+      </section>
+    </header>
   );
 };
 

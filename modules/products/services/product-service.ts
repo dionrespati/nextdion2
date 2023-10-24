@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { IProduct, IProductListResponse } from "@types";
+import { IProduct, IProductListResponse } from "@modules";
 
 export async function getListProducts(
   searchTerm: string

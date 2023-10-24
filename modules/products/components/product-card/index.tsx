@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { dollar_ind_curr } from "@modules";
 
 interface IProductCardProps {
   id: number;
@@ -19,7 +20,7 @@ export function ProductCard({
   price,
   thumbnail,
 }: IProductCardProps) {
-  const priceIndonesia = price * 14000;
+  const priceIndonesia = price * dollar_ind_curr;
   return (
     <div className="rounded-lg max-h-96 shadow-lg p-4 border border-gray-300 hover:shadow-xl transition duration-300 ease-in-out">
       <Link href={`/products/${id}`}>

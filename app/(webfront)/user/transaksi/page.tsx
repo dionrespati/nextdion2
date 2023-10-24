@@ -10,8 +10,8 @@ export default function UserTransaksi({
   return (
     <>
       <TransaksiNavbar tipe={tipe} />
-      {tipe === "Pending" && <TransaksiPending />}
-      {tipe === "Berhasil" && <TransaksiSukses />}
+      {tipe === "Pending" ? <TransaksiPending /> : null}
+      {tipe === "Berhasil" ? <TransaksiSukses /> : null}
     </>
   );
 }

@@ -22,7 +22,7 @@ const listMenu = [
 
 export function SideBarUser() {
   return (
-    <div className="w-1/4 p-2 rounded-lg border border-solid border-gray-300">
+    <aside className="w-1/4 p-2 rounded-lg border border-solid border-gray-300">
       <ul>
         {listMenu.map((menuItem, index) => (
           <Link
@@ -35,6 +35,6 @@ export function SideBarUser() {
           </Link>
         ))}
       </ul>
-    </div>
+    </aside>
   );
 }

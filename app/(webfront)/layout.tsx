@@ -1,6 +1,6 @@
-import { Footer, Header } from "@components";
+import { Header } from "@components";
 import React from "react";
-import { ProductSearching } from "@page-components";
+import { ProductSearching } from "@modules";
 
 export default function RootLayout({
   children,

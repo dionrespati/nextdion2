@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { VscAdd, VscRemove, VscEdit } from "react-icons/vsc";
 import { Button, LoadingSpinner, TextInput } from "@components";
 import { IProduct } from "@types";
-import { useCartStore } from "@modules";
+import { useCartStore, dollar_ind_curr } from "@modules";
 
 interface ProductQtyAdjustProps {
   dataProduct: IProduct | undefined; // Tentukan tipe data untuk properti dataProduct
@@ -32,7 +32,7 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
   const { id, title, price, thumbnail, discountPercentage, stock } =
     dataProduct;
 
-  const totalPrice = curQty * price * 14000;
+  const totalPrice = curQty * price * dollar_ind_curr;
   // Menghitung jumlah diskon dalam jumlah persen
   const diskonDesimal = discountPercentage / 100; // Mengubah persentase ke desimal
   const totalDiskon = Math.ceil(totalPrice * diskonDesimal);
