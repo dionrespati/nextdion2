@@ -24,7 +24,8 @@
       "@components": ["components/index"],
       "@modules": ["modules/index"],
       "@types": ["modules/index"],
-      "@page-components": ["modules/index"]
+      "@page-components": ["modules/index"],
+      "@assets": ["public/assets"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import { useListProducts } from "@modules";
-import { IProduct } from "@types";
-import { ProductList } from "@page-components";
-import { LoadingSpinner } from "@components";
+import { useListProducts, ProductList, IProduct } from "@modules";
+import { ErrorMessage, LoadingSpinner } from "@components";
 import { useSearchParams } from "next/navigation";
 
 export default function Products() {
@@ -17,5 +15,18 @@ export default function Products() {
   }
 
   const { products }: { products?: IProduct[] } = data ?? {};
-  return <ProductList products={products} />;
+
+  if (products?.length === 0) {
+    return (
+      <ErrorMessage
+        message="Produk yang anda cari tidak ditemukan.."
+        timeout={3000}
+      />
+    );
+  }
+  return (
+    <>
+      <ProductList products={products} />
+    </>
+  );
 }

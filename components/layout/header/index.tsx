@@ -1,72 +1,29 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { MdMenu, MdClear } from "react-icons/md";
-import clsx from "clsx";
-
-const menu = [
-  { url: "/products", linkName: "Produk", icon: "MdLogin" },
-  { url: "/about", linkName: "Tentang Kami", icon: "MdInfoOutline" },
-  { url: "/special", linkName: "Spesial Promo", icon: "MdOutlineDiscount" },
-];
+import { Badge, Notif, UserIcon } from "@components";
+import Image from "next/image";
+import { ProductSearching } from "@modules";
 
 const Header = () => {
-  const [toggle, setToggle] = useState(false);
-
-  function toggleMenu() {
-    setToggle(!toggle);
-  }
-
   return (
-    <header className="fixed top-0 w-full z-10 bg-slate-200 h-[50px]">
-      <nav className="text-violet-900 text-lg font-semibold flex justify-between gap-2 items-center p-2">
-        <div>
-          <Link href="/products" className="text-2xl font-semibold">
-            BakulMurah
+    <header className="relative">
+      <section className="fixed bg-slate-100 top-0 w-full z-10 h-[50px] flex justify-between gap-2 items-center">
+        <div className="flex justify-center items-center gap-2 ml-3 w-full">
+          <Image width={45} height={45} alt="prop" src="/assets/ic-logo.png" />
+          <Link
+            href="/products"
+            className="hidden text-2xl font-semibold lg:block"
+          >
+            Bakul<span className="text-green-800">Murah</span>
           </Link>
+          <ProductSearching />
         </div>
-        <ul className="hidden lg:flex justify-end items-center gap-3">
-          {menu.map((item) => (
-            <li key={item.url}>
-              <Link href={item.url} className="hover:text-red-500">
-                {item.linkName}
-              </Link>
-            </li>
-          ))}
-          <li>Sign In</li>
-        </ul>
-        <button className="lg:hidden" onClick={toggleMenu}>
-          <MdMenu width={20} height={20} />
-        </button>
-      </nav>
-      <div
-        className={clsx(
-          toggle ? "hidden" : "block",
-          "lg:hidden fixed top-0 left-0 w-[300px] h-screen bg-white z-20",
-          "transition duration-250 ease-in-out"
-        )}
-      >
-        <div className="absolute right-2 top-2">
-          <button onClick={() => setToggle(!toggle)}>
-            <MdClear />
-          </button>
+        <div className="flex gap-2 items-center">
+          <Badge />
+          <Notif totalItems={0} />
+          <UserIcon />
         </div>
-        <div>
-          <ul className="flex flex-col justify-start items-start gap-3">
-            {menu.map((item) => {
-              const Icon = item.icon;
-              return (
-                <li key={item.url}>
-                  <Link href={item.url} onClick={() => setToggle(!toggle)}>
-                    {item.linkName}
-                  </Link>
-                </li>
-              );
-            })}
-            <li>Sign In</li>
-          </ul>
-        </div>
-      </div>
+      </section>
     </header>
   );
 };

@@ -2,29 +2,13 @@
 
 import { InputSearch, LoadingSpinner } from "@components";
 import React, { useState } from "react";
-import { useListProductCategory } from "@modules";
 
 import { useRouter } from "next/navigation";
 
 export function ProductSearching() {
   const { push } = useRouter();
 
-  const { data, isLoading, isSuccess } = useListProductCategory();
-
-  const [category, setCategory] = useState("");
   const [searchText, setSearchText] = useState("");
-
-  function pilihCategory(e: React.ChangeEvent<HTMLSelectElement>) {
-    const { value } = e.target;
-    setCategory(value);
-    e.preventDefault();
-
-    if (value !== "") {
-      push(`/products/category/${value}`);
-    } else {
-      push(`/products`);
-    }
-  }
 
   function handleSearchTextChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
@@ -44,33 +28,13 @@ export function ProductSearching() {
     }
   }
 
-  function handleSelect() {}
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  const categories = data ?? [];
-
   return (
-    <div className="fixed top-[60px] flex w-full flex-col sm:flex-row items-center gap-2 p-2">
-      <div className="flex w-full flex-col md:w-2/5 md:flex-row items-center gap-2">
-        {/* <AutoCompleteSelect options={categories} onSelect={handleSelect} /> */}
-        <select
-          name="category"
-          id=""
-          onChange={pilihCategory}
-          className="w-full p-2 rounded-lg text-lg font-normal"
-        >
-          <option value="">--Pilih Kategori--</option>
-          {data?.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+    //className="fixed top-[50px] flex w-full flex-col bg-slate-200 sm:flex-row items-center gap-2 p-2"
+    <div className="flex w-full gap-3">
+      <div className="flex justify-center flex-col lg:w-16 lg:flex-row items-center gap-2 hover:bg-slate-200 cursor-pointer">
+        <span className="text-sm font-semibold">Kategori</span>
       </div>
-      <div className="flex w-full flex-col md:w-3/5 md:flex-row items-center gap-2">
+      <div className="flex flex-col lg:w-[400px] lg:flex-row items-center gap-2">
         <InputSearch
           placeholder="Cari produk disini.."
           name="searchPrd"

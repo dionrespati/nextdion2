@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  EyeIcon,
-  EyeSlashIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import type { ChangeEvent, FocusEvent, ReactNode, KeyboardEvent } from "react";
 import React, { useState } from "react";
+import { BsCheckCircle, BsEye, BsEyeSlash, BsSearch } from "react-icons/bs";
 
 type TextInputProps = {
   label?: string;
@@ -26,8 +22,10 @@ type TextInputProps = {
   className?: string;
   placeholder?: string;
   maxLength?: number;
-  prefix?: string;
-  suffix?: string;
+  prefix?: string | ReactNode;
+  suffix?: string | ReactNode;
+  size?: "md" | "lg" | "sm";
+  isValid?: boolean;
 };
 
 export default function TextInput({
@@ -49,6 +47,8 @@ export default function TextInput({
   maxLength,
   prefix,
   suffix,
+  size = "md",
+  isValid = false,
 }: TextInputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [isShowPassword, setisShowPassword] = useState(false);
@@ -80,12 +80,13 @@ export default function TextInput({
 
   const passwordStyle = "absolute top-1/2 right-2 transform -translate-y-1/2";
   const addOnsStyle =
-    "flex justify-center bg-slate-300 min-w-[40px] items-center h-10 px-2 border border-solid";
+    "flex justify-center bg-slate-100 min-w-[40px] items-center h-10 px-2 border border-solid";
 
-  let borderColor = "border-slate-500";
+  let borderColor = "border-slate-300";
   if (isFocused && !isError) borderColor = "border-sky-500";
   if (isError) borderColor = "border-red-600";
   if (disabled) borderColor = "border-slate-500";
+  //if (isValid) borderColor = "border-green-500";
 
   let textColor = "text-slate-800";
   if (isError) textColor = "text-red-600";
@@ -96,29 +97,47 @@ export default function TextInput({
 
   return (
     <div
-      className={clsx("w-full flex gap-1 flex-col", className, {
+      className={clsx("w-full relative flex gap-1 flex-col", className, {
         error: isError,
       })}
     >
       <label
         htmlFor={name}
-        className={clsx("block text-left", textColor, borderColor)}
+        className={clsx(
+          "flex items-center font-normal text-left mb-1",
+          textColor,
+          borderColor
+        )}
       >
-        {label}
+        {required ? <span className="text-red-500 mr-1">*</span> : null}
+
+        <span className={isValid ? `text-green-800` : `text-black`}>
+          {label}
+        </span>
+        {isValid ? (
+          <BsCheckCircle className="ml-1 mf-2" color="green" size={20} />
+        ) : null}
       </label>
-      <div className="flex w-full">
-        {hasPrefix && (
+      <div className="flex w-full items-center">
+        {hasPrefix ? (
           <div
             className={clsx(
               "rounded-l border-r-0",
               addOnsStyle,
               textColor,
-              borderColor
+              borderColor,
+              {
+                "h-10": size === "sm",
+                "h-12": size === "md",
+                "h-14": size === "lg",
+              }
             )}
           >
-            <span>{prefix}</span>
+            <span className={size === "sm" || size === "md" ? `p-2` : `p-3`}>
+              {prefix}
+            </span>
           </div>
-        )}
+        ) : null}
         <div className="relative w-full">
           <input
             id={name}
@@ -139,34 +158,41 @@ export default function TextInput({
               {
                 "rounded-l": !hasPrefix,
                 "rounded-r": !hasSuffix,
+                "h-10": size === "sm",
+                "h-12": size === "md",
+                "h-14": size === "lg",
               }
             )}
             placeholder={placeholder}
             maxLength={maxLength}
           />
-          {inputType === "password" && !isShowPassword && (
+          {inputType === "password" && !isShowPassword ? (
             <button
               type="button"
               onClick={() => setisShowPassword(true)}
               className={passwordStyle}
             >
-              <EyeSlashIcon height={24} />
+              <BsEyeSlash size={25} />
             </button>
-          )}
+          ) : null}
 
-          {inputType === "text" && isShowPassword && (
-            <button type="button" className={passwordStyle}>
-              <EyeIcon height={24} />
+          {inputType === "text" && isShowPassword ? (
+            <button
+              type="button"
+              onClick={() => setisShowPassword(false)}
+              className={passwordStyle}
+            >
+              <BsEye size={25} />
             </button>
-          )}
+          ) : null}
 
-          {type === "search" && (
+          {type === "search" ? (
             <div className="absolute top-1/2 right-2 transform -translate-y-1/2">
-              <MagnifyingGlassIcon height={24} />
+              <BsSearch size={25} />
             </div>
-          )}
+          ) : null}
         </div>
-        {hasSuffix && (
+        {hasSuffix ? (
           <div
             className={clsx(
               "rounded-r border-l-0",
@@ -177,13 +203,13 @@ export default function TextInput({
           >
             <span>{suffix}</span>
           </div>
-        )}
+        ) : null}
       </div>
-      {message && (
-        <p className={clsx("mt-1 text-[10px] leading-normal", textColor)}>
+      {message ? (
+        <p className={clsx("mt-1 text-[11px] leading-normal", textColor)}>
           {message}
         </p>
-      )}
+      ) : null}
     </div>
   );
 }

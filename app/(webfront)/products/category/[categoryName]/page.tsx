@@ -1,21 +1,27 @@
 "use client";
 
 import React from "react";
-import { useListProductByCategory } from "@modules";
-import { IProduct } from "@types";
-import { ProductList } from "@page-components";
-import { LoadingSpinner } from "@components";
+import { useListProductByCategory, ProductList, IProduct } from "@modules";
+import { ErrorMessage, LoadingSpinner } from "@components";
 
 export default function ProductByCat({ params }: string | any) {
   const { categoryName } = params;
 
-  const { data, isLoading } = useListProductByCategory(categoryName);
+  const { data, isFetched } = useListProductByCategory(categoryName);
 
-  if (isLoading) {
+  if (!isFetched) {
     return <LoadingSpinner />;
   }
 
   const { products }: { products?: IProduct[] } = data ?? {};
 
-  return <ProductList products={products} />;
+  if (products?.length === 0) {
+    return <ErrorMessage pesan="Produk yang dicari tidak ada.." />;
+  }
+
+  return (
+    <>
+      <ProductList products={products} />
+    </>
+  );
 }

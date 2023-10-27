@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { dollar_ind_curr } from "@modules";
 
 interface IProductCardProps {
   id: number;
@@ -19,8 +20,9 @@ export function ProductCard({
   price,
   thumbnail,
 }: IProductCardProps) {
+  const priceIndonesia = price * dollar_ind_curr;
   return (
-    <div className="rounded-lg shadow-lg p-4 border border-gray-300 hover:shadow-xl transition duration-300 ease-in-out">
+    <div className="rounded-lg max-h-96 shadow-lg p-4 border border-gray-300 hover:shadow-xl transition duration-300 ease-in-out">
       <Link href={`/products/${id}`}>
         <div className="w-full h-48 md:h-56 overflow-hidden">
           <Image
@@ -38,16 +40,16 @@ export function ProductCard({
             className="text-lg font-bold truncate"
             style={{ maxWidth: "150px" }}
           >
-            {title} LKK
+            {title}
           </h2>
-          <p className="text-gray-600">${price.toLocaleString()}</p>
+          <p className="text-gray-600">Rp {priceIndonesia.toLocaleString()}</p>
         </div>
         <div className="flex justify-between mt-4">
           <button
             className="bg-blue-500 text-white rounded-lg px-4 py-2 w-full hover:bg-green-700 transition duration-300 ease-in-out"
             onClick={() => addProduct(id)}
           >
-            Add to Carts
+            Tambah ke Keranjang
           </button>
         </div>
       </div>

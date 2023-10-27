@@ -1,11 +1,11 @@
 import { ReactQueryWrapper } from "@components";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Head from "next/head";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Fake Apps",
   description: "Web pura-pura",
 };
@@ -15,13 +15,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { title, description } = metadata;
   return (
     <html lang="en">
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Head>
       <body className={inter.className}>
         <ReactQueryWrapper>{children}</ReactQueryWrapper>
       </body>
