@@ -109,17 +109,17 @@ export default function TextInput({
           borderColor
         )}
       >
-        {required && <span className="text-red-500 mr-1">*</span>}
+        {required ? <span className="text-red-500 mr-1">*</span> : null}
 
         <span className={isValid ? `text-green-800` : `text-black`}>
           {label}
         </span>
-        {isValid && (
+        {isValid ? (
           <BsCheckCircle className="ml-1 mf-2" color="green" size={20} />
-        )}
+        ) : null}
       </label>
       <div className="flex w-full items-center">
-        {hasPrefix && (
+        {hasPrefix ? (
           <div
             className={clsx(
               "rounded-l border-r-0",
@@ -137,7 +137,7 @@ export default function TextInput({
               {prefix}
             </span>
           </div>
-        )}
+        ) : null}
         <div className="relative w-full">
           <input
             id={name}
@@ -166,7 +166,7 @@ export default function TextInput({
             placeholder={placeholder}
             maxLength={maxLength}
           />
-          {inputType === "password" && !isShowPassword && (
+          {inputType === "password" && !isShowPassword ? (
             <button
               type="button"
               onClick={() => setisShowPassword(true)}
@@ -174,9 +174,9 @@ export default function TextInput({
             >
               <BsEyeSlash size={25} />
             </button>
-          )}
+          ) : null}
 
-          {inputType === "text" && isShowPassword && (
+          {inputType === "text" && isShowPassword ? (
             <button
               type="button"
               onClick={() => setisShowPassword(false)}
@@ -184,15 +184,15 @@ export default function TextInput({
             >
               <BsEye size={25} />
             </button>
-          )}
+          ) : null}
 
-          {type === "search" && (
+          {type === "search" ? (
             <div className="absolute top-1/2 right-2 transform -translate-y-1/2">
               <BsSearch size={25} />
             </div>
-          )}
+          ) : null}
         </div>
-        {hasSuffix && (
+        {hasSuffix ? (
           <div
             className={clsx(
               "rounded-r border-l-0",
@@ -203,13 +203,13 @@ export default function TextInput({
           >
             <span>{suffix}</span>
           </div>
-        )}
+        ) : null}
       </div>
-      {message && (
+      {message ? (
         <p className={clsx("mt-1 text-[11px] leading-normal", textColor)}>
           {message}
         </p>
-      )}
+      ) : null}
     </div>
   );
 }

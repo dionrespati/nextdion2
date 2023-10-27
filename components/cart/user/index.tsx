@@ -4,7 +4,10 @@ import { AiOutlineUser } from "react-icons/ai";
 
 export function UserIcon() {
   return (
-    <Link href="/user/settings?tipe=Biodata" className="relative mr-4">
+    <Link
+      href="/user/settings?tipe=Biodata"
+      className="relative mr-4 text-gray-600"
+    >
       <div className="relative mr-4">
         <AiOutlineUser className="text-2xl" />
       </div>

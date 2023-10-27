@@ -11,7 +11,8 @@ export function useListProducts(searchQuery: string) {
     ["prdsearch", searchQuery],
     () => getListProducts(searchQuery),
     {
-      staleTime: 20000,
+      staleTime: 30000,
+      refetchInterval: 30000,
     }
   );
 }
@@ -22,7 +23,7 @@ export function useProductDetail(id: number) {
 
 export function useListProductCategory() {
   return useQuery(["prdCat"], () => getListAllProductCategories(), {
-    staleTime: 20000,
+    staleTime: 1000,
   });
 }
 

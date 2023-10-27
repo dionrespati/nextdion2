@@ -98,9 +98,9 @@ export default function Button(props: ButtonProps) {
       disabled={disabled}
       onClick={onClick}
     >
-      {iconStart && <span className="mr-2">{iconStart}</span>}
+      {iconStart ? <span className="mr-2">{iconStart}</span> : null}
       {children}
-      {iconEnd && <span className="ml-2">{iconEnd}</span>}
+      {iconEnd ? <span className="ml-2">{iconEnd}</span> : null}
     </button>
   );
 }

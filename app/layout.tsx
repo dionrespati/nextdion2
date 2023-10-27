@@ -15,7 +15,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { title, description } = metadata;
   return (
     <html lang="en">
       <body className={inter.className}>

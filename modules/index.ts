@@ -28,4 +28,4 @@ export * from "./user/components/settings/rekening-bank";
 export * from "./user/hooks/use-user";
 export * from "./user/services/user-service";
 export * from "./user/types";
-export const dollar_ind_curr = 20000;
+export const dollar_ind_curr = 14000;

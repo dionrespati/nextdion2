@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 
 export function ErrorMessage({
-  pesan,
+  message,
   timeout,
 }: {
-  pesan: string;
+  message: string;
   timeout?: number;
 }) {
   const [visible, setVisible] = useState(true);
@@ -20,14 +20,15 @@ export function ErrorMessage({
   }, [timeout]);
 
   return (
-    <div>
+    <Fragment>
+      {" "}
       {visible ? (
         <section className="p-4 flex justify-center">
           <article className="bg-red-400 p-3 text-white rounded-md w-1/3">
-            <p>{pesan}</p>
+            <p>{message}</p>
           </article>
         </section>
       ) : null}
-    </div>
+    </Fragment>
   );
 }

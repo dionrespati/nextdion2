@@ -16,7 +16,7 @@ export default function CartList() {
   const [selectAllCart, setSelectAllCart] = useState(false);
 
   if (cart.length === 0) {
-    return <ErrorMessage pesan="Keranjang Belanja anda masih kosong.." />;
+    return <ErrorMessage message="Keranjang Belanja anda masih kosong.." />;
   }
 
   function addToCartPrd(
@@ -65,11 +65,11 @@ export default function CartList() {
   }
 
   return (
-    <div className="p-5">
-      <h2 className="text-green-700 text-xl font-semibold mb-5">
+    <div className="relative p-5">
+      <h2 className="fixed text-green-700 text-xl font-semibold mb-5 bg-white top-15">
         Keranjang Belanja Anda
       </h2>
-      <div className="relative flex p-3 gap-10">
+      <div className="relative flex p-3 gap-10 mt-10">
         <div className="mt-2 ml-4 lg:w-2/3">
           <div className="fixed p-2 flex items-center gap-5 bg-white lg:w-[900px]">
             <input
@@ -103,13 +103,11 @@ export default function CartList() {
               const finalPrice = priceIndonesia - totalDiskon;
               return (
                 <Fragment key={item.id}>
-                  <div
-                    className={clsx(
-                      "flex gap-6 mb-4 p-3 rounded-lg border border-slate-300",
-                      {
-                        "bg-green-200 border-green-500": item.checked,
-                      }
-                    )}
+                  <section
+                    className={clsx("flex gap-6 mb-4 p-3 rounded-lg border", {
+                      "bg-green-200 border-green-600": item.checked,
+                      "bg-white border-slate-300": !item.checked,
+                    })}
                   >
                     <div className="flex items-center">
                       <input
@@ -214,7 +212,7 @@ export default function CartList() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </section>
                 </Fragment>
               );
             })}

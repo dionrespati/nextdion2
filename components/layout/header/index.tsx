@@ -1,16 +1,10 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import clsx from "clsx";
 import { Badge, Notif, UserIcon } from "@components";
 import Image from "next/image";
 import { ProductSearching } from "@modules";
-import { useListProductCategory } from "@modules";
 
 const Header = () => {
-  const { data } = useListProductCategory();
-  const categories = data ?? [];
-
   return (
     <header className="relative">
       <section className="fixed bg-slate-100 top-0 w-full z-10 h-[50px] flex justify-between gap-2 items-center">
@@ -28,9 +22,6 @@ const Header = () => {
           <Badge />
           <Notif totalItems={0} />
           <UserIcon />
-          {/* <button className="lg:hidden" onClick={toggleMenu}>
-            <MdMenu width={20} height={20} />
-          </button> */}
         </div>
       </section>
     </header>

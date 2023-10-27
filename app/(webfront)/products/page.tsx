@@ -19,7 +19,7 @@ export default function Products() {
   if (products?.length === 0) {
     return (
       <ErrorMessage
-        pesan="Produk yang anda cari tidak ditemukan.."
+        message="Produk yang anda cari tidak ditemukan.."
         timeout={3000}
       />
     );

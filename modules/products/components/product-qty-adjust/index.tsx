@@ -102,10 +102,10 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
         </div>
         <div>Stok : {stock}</div>
       </div>
-      {curQty > stock && (
+      {curQty > stock ? (
         <h3 className="text-red-700">Max Pembelian : {stock}</h3>
-      )}
-      {!isNoteShow && (
+      ) : null}
+      {!isNoteShow ? (
         <div className="flex gap-1 justify-start mb-4">
           <button
             className="flex items-center gap-3"
@@ -117,8 +117,7 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
             </span>
           </button>
         </div>
-      )}
-      {isNoteShow && (
+      ) : (
         <div className="flex flex-col gap-1 justify-start mb-4">
           <TextInput
             name="note"
@@ -126,10 +125,13 @@ export function ProductQtyAdjust({ dataProduct }: ProductQtyAdjustProps) {
             onChange={(e) => setNote(e.target.value)}
           />
           <span onClick={cancelNote}>
-            <h4 className="text-red-600 font-bold text-sm">Batalkan Catatan</h4>
+            <h4 className="text-red-600 font-bold text-sm cursor-pointer">
+              Batalkan Catatan
+            </h4>
           </span>
         </div>
       )}
+
       <div className="flex justify-between mb-1">
         <span className="text-sm">Sub Total</span>{" "}
         <span className="text-sm">Rp {totalPrice.toLocaleString()}</span>
