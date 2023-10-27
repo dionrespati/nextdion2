@@ -16,7 +16,7 @@ export default function ProductByCat({ params }: string | any) {
   const { products }: { products?: IProduct[] } = data ?? {};
 
   if (products?.length === 0) {
-    return <ErrorMessage pesan="Produk yang dicari tidak ada.." />;
+    return <ErrorMessage message="Produk yang dicari tidak ada.." />;
   }
 
   return (
