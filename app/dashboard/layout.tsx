@@ -1,10 +1,18 @@
 import React from "react";
-import ClientRootLayout from "./components/client-root-layout";
+import Header from "./components/header";
+import MainBar from "./components/mainbar";
 
-export default function RootLayout({
+export default function ClientRootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <ClientRootLayout>{children}</ClientRootLayout>;
+  return (
+    <div className="relative">
+      <Header />
+      <section className="flex mt-12">
+        <MainBar>{children}</MainBar>
+      </section>
+    </div>
+  );
 }

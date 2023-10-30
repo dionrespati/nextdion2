@@ -82,7 +82,7 @@ export function SidebarMenu({ isOpen }: { isOpen: boolean }) {
                   <Link
                     key={subMenu.id}
                     className={clsx(
-                      `flex gap-2 items-center hover:cursor-pointer hover:text-yellow-400 font-extralight hover:font-normal hover:rounded-md hover:bg-blue-600`,
+                      `p-1 flex gap-2 items-center hover:cursor-pointer hover:text-yellow-400 font-extralight hover:font-normal hover:rounded-md hover:bg-blue-600`,
                       {
                         "text-yellow-400 font-normal":
                           subMenu.id === linkActive,
