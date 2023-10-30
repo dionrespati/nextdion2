@@ -1,0 +1,30 @@
+name: Docker image CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+env:
+  DOCKER_IMAGE_NAME: ghcr.io/dionrespati/nextdion2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Login Github Container Registry"
+        env:
+          token: ${{ secrets.TOKEN }}
+        run: echo $token | docker login ghcr.io --username dionrespati --password-stdin
+
+      - name: "Build Docker Image"
+        env:
+          token: ${{ secrets.TOKEN }}
+        run: docker build --build-arg GITTOKEN=$token -t $DOCKER_IMAGE_NAME:${GITHUB_SHA:0:4} .
+
+      - name: "Push Docker Image"
+        run: docker push $DOCKER_IMAGE_NAME:${GITHUB_SHA:0:4}
