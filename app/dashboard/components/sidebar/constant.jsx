@@ -44,6 +44,14 @@ export const listMenu = [
     subMenu: [],
   },
   {
+    id: 9,
+    link: "dashboard/member",
+    name: "Member Info",
+    icon: <TbFileInvoice size={25} />,
+    active: true,
+    subMenu: [],
+  },
+  {
     id: 6,
     link: "dashboard/setting",
     name: "User Konfigurasi",

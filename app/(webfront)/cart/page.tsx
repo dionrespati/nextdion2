@@ -1,8 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { VscEdit } from "react-icons/vsc";
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
-import { BsTrash } from "react-icons/bs";
+import {
+  AiOutlinePlusCircle,
+  AiOutlineMinusCircle,
+  AiOutlineEdit,
+  AiOutlineDelete,
+} from "react-icons/ai";
 import { useCartStore, dollar_ind_curr } from "@modules";
 import Link from "next/link";
 import Image from "next/image";
@@ -141,7 +144,7 @@ export default function CartList() {
                           {note === "" ? (
                             <div className="flex gap-1 justify-start mb-4">
                               <button className="flex items-center gap-2">
-                                <VscEdit className="text-green-700" />
+                                <AiOutlineEdit className="text-green-700" />
                                 <span className="text-green-700 font-bold">
                                   Tulis Catatan
                                 </span>
@@ -164,7 +167,7 @@ export default function CartList() {
                             Masukkan ke Wishlist
                           </Link>
                           <span>|</span>
-                          <BsTrash size={24} className="text-red-700" />
+                          <AiOutlineDelete size={24} className="text-red-700" />
                           <button
                             onClick={() => {
                               addToCartPrd(
