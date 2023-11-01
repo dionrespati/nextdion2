@@ -32,7 +32,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <h2>Halaman Login</h2>
       <div>
         {activeTab === "Login" ? <Login /> : null}
         {activeTab === "Daftar" ? <RegisterUser /> : null}
