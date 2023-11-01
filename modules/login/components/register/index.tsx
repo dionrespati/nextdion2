@@ -33,7 +33,8 @@ export function RegisterUser() {
   const isValidPassword =
     /^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
 
-  const isValidConfirmPassword = password === confirmPassword;
+  const isValidConfirmPassword =
+    confirmPassword !== "" && password === confirmPassword;
 
   const isValidHP = phone.length >= 10;
 
@@ -56,12 +57,13 @@ export function RegisterUser() {
   }
 
   return (
-    <>
+    <div className="overflow-auto">
       <div className="mb-2">
         <TextInput
           label="Email"
           type="email"
           name="email"
+          size="sm"
           prefix={<BiMailSend size={25} />}
           value={email}
           onChange={handleChange}
@@ -78,6 +80,7 @@ export function RegisterUser() {
           label="Nomor HP"
           type="text"
           name="phone"
+          size="sm"
           prefix={<GiSmartphone size={25} />}
           value={phone}
           onChange={handleInputNumber}
@@ -94,6 +97,7 @@ export function RegisterUser() {
           label="Username"
           type="text"
           name="username"
+          size="sm"
           prefix={<BiUser size={25} />}
           value={username}
           onChange={handleChange}
@@ -110,6 +114,7 @@ export function RegisterUser() {
           label="Password"
           type="password"
           name="password"
+          size="sm"
           prefix={<BiKey size={25} />}
           value={password}
           onChange={handleChange}
@@ -128,6 +133,7 @@ export function RegisterUser() {
           label="Ulangi Password"
           type="password"
           name="confirmPassword"
+          size="sm"
           prefix={<BiKey size={25} />}
           value={confirmPassword}
           onChange={handleChange}
@@ -146,12 +152,13 @@ export function RegisterUser() {
           className="w-full"
           color="primary"
           type="button"
+          size="sm"
           iconStart={<BiUserPlus size={30} />}
           disabled={!isFormValid}
         >
           Register
         </Button>
       </div>
-    </>
+    </div>
   );
 }

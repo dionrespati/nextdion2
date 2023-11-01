@@ -3,7 +3,11 @@ import { useListProductCategory } from "@modules";
 import Link from "next/link";
 import React from "react";
 
-export function ProductCategory() {
+export function ProductCategory({
+  categoryName,
+}: {
+  categoryName: string | undefined;
+}) {
   const { data, isLoading } = useListProductCategory();
 
   if (isLoading) {
@@ -11,23 +15,28 @@ export function ProductCategory() {
   }
 
   return (
-    <aside className="w-full bg-gray-200 p-4 rounded-lg shadow-md">
-      <h2 className="text-lg font-semibold mb-4 text-black">Kategori Produk</h2>
-      <ul>
-        {data?.map((category) => (
-          <li
-            key={category}
-            className="mb-2 border-b border-gray-400 last:border-b-0 transition duration-300 hover:bg-gray-300 hover:shadow-inner"
-          >
-            <Link
-              href={`/products/category/${category}`}
-              className="text-black hover:text-teal-400 transition duration-300 block py-2 px-4"
-            >
-              {category}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <aside className="fixed lg:w-[260px] rounded-lg shadow-md border border-gray-200 h-96 overflow-y-auto">
+      <div>
+        <div className="sticky top-0 z-10 bg-white p-2 flex justify-center items-center border-b border-gray-300">
+          <h2 className="text-lg font-semibold text-green-700 ">
+            Kategori Produk
+          </h2>
+        </div>
+        <ul className="relative top-1">
+          {data?.map((category) => (
+            <li key={category} className="p-1 ml-2 hover:bg-green-300">
+              <Link
+                href={`/products/category/${category}`}
+                className={
+                  category === categoryName ? `text-green-800` : `text-gray-700`
+                }
+              >
+                {category}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </aside>
   );
 }

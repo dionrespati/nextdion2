@@ -1,4 +1,4 @@
-import { ReactQueryWrapper } from "@components";
+import { Header, ReactQueryWrapper } from "@components";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Metadata } from "next";
@@ -18,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReactQueryWrapper>{children}</ReactQueryWrapper>
+        <ReactQueryWrapper>
+          <Header />
+          <main className="mt-32 lg:mt-14">{children}</main>
+        </ReactQueryWrapper>
       </body>
     </html>
   );
