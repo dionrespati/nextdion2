@@ -21,7 +21,7 @@ export default function ProductByCat({ params }: string | any) {
 
   return (
     <>
-      <ProductList products={products} />
+      <ProductList products={products} categoryName={categoryName} />
     </>
   );
 }
