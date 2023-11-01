@@ -3,7 +3,6 @@ import { Login, RegisterUser, ForgotPassword } from "@modules";
 import React, { useState } from "react";
 import { RiShieldUserLine } from "react-icons/ri";
 
-
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Login");
 
@@ -33,6 +32,7 @@ export default function Home() {
           </div>
         ))}
       </div>
+      <h2>Halaman Login</h2>
       <div>
         {activeTab === "Login" ? <Login /> : null}
         {activeTab === "Daftar" ? <RegisterUser /> : null}
