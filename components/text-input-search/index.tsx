@@ -1,6 +1,6 @@
 "use client";
 
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import clsx from "clsx";
 import React, { ChangeEvent, useState } from "react";
 
@@ -50,7 +50,7 @@ export default function InputSearch({
   return (
     <div className="relative w-full">
       <div className="absolute top-1/2 left-2 transform -translate-y-1/2 flex">
-        <MagnifyingGlassIcon height={24} className="opacity-50" />
+        <HiMagnifyingGlass height={24} className="opacity-50" />
       </div>
       <form>
         <input

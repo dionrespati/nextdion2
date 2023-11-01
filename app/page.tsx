@@ -1,6 +1,6 @@
 "use client";
+import { Login, RegisterUser, ForgotPassword } from "@modules";
 import React, { useState } from "react";
-import { Login, ForgotPassword, RegisterUser } from "@modules";
 import { RiShieldUserLine } from "react-icons/ri";
 
 export default function Home() {
@@ -32,6 +32,7 @@ export default function Home() {
           </div>
         ))}
       </div>
+      <h2>Halaman Login</h2>
       <div>
         {activeTab === "Login" ? <Login /> : null}
         {activeTab === "Daftar" ? <RegisterUser /> : null}
