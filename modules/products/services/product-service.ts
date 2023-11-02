@@ -1,6 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 import { IProduct, IProductListResponse } from "@modules";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export async function getListProducts(
   searchTerm: string
 ): Promise<IProductListResponse> {
@@ -9,7 +11,7 @@ export async function getListProducts(
     paramSearch = `/search?q=${searchTerm}`;
   }
   return axios
-    .get(`https://dummyjson.com/products${paramSearch}`)
+    .get(`${apiUrl}/products${paramSearch}`)
     .then((response: AxiosResponse<IProductListResponse>) => response.data)
     .catch((error) => {
       throw new Error(
@@ -20,7 +22,7 @@ export async function getListProducts(
 
 export async function getListAllProductCategories(): Promise<Array<string>> {
   return axios
-    .get(`https://dummyjson.com/products/categories`)
+    .get(`${apiUrl}/products/categories`)
     .then((response: AxiosResponse<Array<string>>) => response.data)
     .catch((error) => {
       throw new Error(
@@ -31,7 +33,7 @@ export async function getListAllProductCategories(): Promise<Array<string>> {
 
 export async function getDetailProductById(id: number): Promise<IProduct> {
   return axios
-    .get(`https://dummyjson.com/products/${id}`)
+    .get(`${apiUrl}/products/${id}`)
     .then((response: AxiosResponse<IProduct>) => response.data)
     .catch((error) => {
       throw new Error(
@@ -45,7 +47,7 @@ export async function getListProductsByCategory(
 ): Promise<IProductListResponse> {
   console.log({ categoryName });
   return axios
-    .get(`https://dummyjson.com/products/category/${categoryName}`)
+    .get(`${apiUrl}/products/category/${categoryName}`)
     .then((response: AxiosResponse<IProductListResponse>) => response.data)
     .catch((error) => {
       throw new Error(
