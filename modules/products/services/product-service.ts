@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { IProduct, IProductListResponse } from "@modules";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const apiUrl2 = process.env.NEXT_PUBLIC_API_PRODUCT;
 
 export async function getListProducts(
   searchTerm: string
@@ -33,7 +34,7 @@ export async function getListAllProductCategories(): Promise<Array<string>> {
 
 export async function getDetailProductById(id: number): Promise<IProduct> {
   return axios
-    .get(`${apiUrl}/products/${id}`)
+    .get(`${apiUrl2}/products/${id}`)
     .then((response: AxiosResponse<IProduct>) => response.data)
     .catch((error) => {
       throw new Error(
